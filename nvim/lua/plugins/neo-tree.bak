@@ -1,0 +1,80 @@
+return {
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons", -- optional, but recommended
+			"3rd/image.nvim",
+		},
+		lazy = false, -- neo-tree will lazily load itself
+
+		config = function()
+			local components = require("neo-tree.sources.common.components")
+			require("image").setup({
+				backend = "kitty",
+				integrations = { neotree = { enabled = true, clear_cache = true } },
+			})
+
+			require("neo-tree").setup({
+
+				close_if_last_window = true,
+				popup_border_style = "rounded",
+				enable_git_status = true,
+				enable_diagnostics = true,
+
+				-- source_selector = { winbar = true, statusline = false },
+				window = {
+					width = 30,
+					mappings = {
+						["<space>"] = "none",
+						["<Tab>"] = "next_source", -- Or Tab/Shift-Tab
+						["<S-Tab>"] = "prev_source",
+					},
+				},
+				filesystem = {
+					components = {
+						name = function(config, node, state)
+							-- use default name component first
+							local name = components.name(config, node, state)
+
+							-- depth 1 is the root node
+							if node:get_depth() == 1 then
+								local folder = vim.fn.fnamemodify(state.path, ":t")
+
+								name.text = "" .. folder .. "  "
+							end
+
+							return name
+						end,
+					},
+				},
+
+				default_component_configs = {
+					indent = { padding = 1 },
+					icon = {
+						folder_closed = "",
+						folder_open = "",
+						folder_empty = "",
+					},
+					git_status = {
+						symbols = {
+							added = "",
+							modified = "",
+							deleted = "",
+							renamed = "➜",
+							untracked = "★",
+							ignored = "◌",
+							unstaged = "✗",
+							staged = "✓",
+							conflict = "",
+						},
+					},
+				},
+			})
+			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#000000", fg = nil })
+			vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#000000", fg = nil })
+		end,
+	},
+}
