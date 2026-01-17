@@ -1,0 +1,6 @@
+Rustlings|/home/manuseb/codeWork/rustlings/
+Rust|/home/manuseb/codeWork/rustPractice/
+Boot Dev|/home/manuseb/codeWork/bootdev/
+DSA|/home/manuseb/codeWork/codeforces/
+LLD|/home/manuseb/codeWork/LLD-practice/
+testing|/home/manuseb/.local/bin
