@@ -1,0 +1,44 @@
+
+# ---------------- Colors ----------------
+#background #09090F
+background #000000
+foreground #d4be98
+
+# Normal colors
+color0  #32302f
+color1  #ea6962
+color2  #a9b665
+color3  #d8a657
+color4  #7daea3
+color5  #d3869b
+color6  #89b482
+color7  #d4be98
+
+# Bright colors
+color8  #32302f
+color9  #ea6962
+color10 #a9b665
+color11 #d8a657
+color12 #7daea3
+color13 #d3869b
+color14 #89b482
+color15 #d4be98
+
+cursor #93a1a1
+cursor_text_color #002b36
+cursor_beam 1
+cursor_blinking yes
+enable_3d true
+
+confirm_os_window_close 0
+
+# ---------------- Font ----------------
+font_family JetBrains Nerd Font
+bold_font   JetBrains Nerd Font
+italic_font JetBrains Nerd Font
+bold_italic_font JetBrains Nerd Font
+font_size 14
+
+# ---------------- Window ----------------
+background_opacity 1.0
+window_padding_width 20
